@@ -31,6 +31,16 @@
             text-align: right;
         }
         
+        #note-add-btn{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            font-size: 80px;
+            border-radius: 100%;
+            width: 100px;
+            height: 100px;
+        }
+        
     </style>
 </head>
 <body>
@@ -43,6 +53,7 @@
             <div class="note-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni ad laborum maxime commodi, quos enim ullam cum minima, voluptatum, assumenda sunt! Aut suscipit obcaecati, at! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni ad laborum maxime commodi, quos enim ullam cum minima, voluptatum, assumenda sunt! Aut suscipit obcaecati, at!</div>
         </div>
     </div>
+    <button id="note-add-btn">+</button>
     
     <script>
         var note = document.querySelector("#note-gallery").innerHTML;
@@ -58,7 +69,7 @@
         */
         
         var i = 0
-        var end = 10
+        var end = 50
         while (i<end){
             console.log(i)
             document.querySelector("#note-gallery").innerHTML += note
