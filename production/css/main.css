@@ -73,6 +73,23 @@
     transform: scale(0.9)
 }
 
+#control-menu {
+    background-color: var(--p-color);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    left: 0;
+}
+
+#ctrl-menu-delete{
+    background-color: var(--button-bg-2);
+    color: var(--button-text-2);
+    padding: 10px;
+}
+
 
 /*
     btn-delete{
