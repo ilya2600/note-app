@@ -63,6 +63,7 @@
     box-shadow: 0px 4px 6px var(--shadow-1);
     /* :hover, :active, анимация */
     transition: 0.25s;
+    z-index: 100;
 }
 
 #note-add-btn:hover{

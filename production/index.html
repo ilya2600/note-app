@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/anim.css">
+    <link rel="stylesheet" href="css/confirm.css">
+    <link rel="icon" href="assets/favicon.ico">
 </head>
 
 <body>
@@ -25,37 +28,103 @@
         <div id="note-name">Заметка</div>
         <textarea id="note-text"></textarea>
         <div id="modal-buttons">
-            <button id="btn-delete">Удалить</button>
+            <button id="btn-delete" onclick="ShowConfirm()">Удалить</button>
             <button id="btn-save" onclick="SaveNote()">Сохранить</button>
+        </div>
+    </div>
+    
+    <!-- Всплывающие Окно -->
+    <div id="confirm-popup">
+        <div id="confirm-box">
+            <div id="confirm-icon">!</div>
+            <div id="confirm-text"> Вы уверены, что хотите удалить заметку? </div>
+            <div id="confirm-buttons">
+                <button id="yes-btn" onclick="DeleteNote()">Да</button>
+                <button id="no-btn" onclick="HideConfirm()">Нет</button>
+            </div>
         </div>
     </div>
 
     <!-- Меню Управления -->
-    <div id="control-menu">
-        <button id="ctrl-menu-delete" onclick="DeleteNote()">Удалить</button>
-    </div>
+    <!--<div id="control-menu">
+        <button id="ctrl-menu-delete" onclick="ShowConfirm()">Удалить</button>
+    </div>-->
 
     <script>
         var noteIndex = localStorage.getItem("na_noteIndex")
-        
-        var controlMenu = document.querySelector("#control-menu")
-        controlMenu.style.display = "none"
-        
-        var selectedNoteIndex
-        var editMode = false
-
         if (noteIndex === null)
             noteIndex = 0
+        
+        var main = document.querySelector("#main")
+        var modal = document.querySelector("#modal")
+        var confirm = document.querySelector("#confirm-popup")
+        var addBtn = document.querySelector("#note-add-btn")
+        //var controlMenu = document.querySelector("#control-menu")
+        //controlMenu.style.display = "none"
+        
+        //редактирование
+        var selectedNoteIndex
+        var editMode = false
+        
+        //анимации
+        var modalDuration = "0.45s"
+
+        
 
         function OpenModal() {
-            document.querySelector("#main").style.display = "none"
-            document.querySelector("#modal").style.display = "flex"
+            //document.querySelector("#main").style.display = "none"
+            //document.querySelector("#modal").style.display = "flex"
+            
+            addBtn.style.animationName = "none"
+            addBtn.offsetWidth
+            modal.style.animationName = "none"
+            modal.offsetWidth
+            main.style.animationName = "none"
+            main.offsetWidth
+            
+            addBtn.style.animationName = "AddBtnAnim"
+            addBtn.style.animationDuration = modalDuration
+            addBtn.style.animationFillMode = "forwards"
+            addBtn.style.animationDirection = "normal"
+            
+            modal.style.animationName = "ModalAnim"
+            modal.style.animationDuration = modalDuration
+            modal.style.animationFillMode = "forwards"
+            modal.style.animationDirection = "normal"
+            
+            main.style.animationName = "MainAnim"
+            main.style.animationDuration = modalDuration
+            main.style.animationFillMode = "forwards"
+            main.style.animationDirection = "normal"
         }
 
         function CloseModal() {
-            document.querySelector("#main").style.display = "block"
-            document.querySelector("#modal").style.display = "none"
+            //document.querySelector("#main").style.display = "block"
+            //document.querySelector("#modal").style.display = "none"
             document.querySelector("#note-text").value = ""
+            
+            
+            addBtn.style.animationName = "none" //обнуление анимации
+            addBtn.offsetWidth //перезагрузка стилей, перезапуск анимации
+            modal.style.animationName = "none"
+            modal.offsetWidth
+            main.style.animationName = "none"
+            main.offsetWidth
+            
+            addBtn.style.animationName = "AddBtnAnim"
+            addBtn.style.animationDuration = modalDuration
+            addBtn.style.animationFillMode = "forwards"
+            addBtn.style.animationDirection = "reverse"
+            
+            modal.style.animationName = "ModalAnim"
+            modal.style.animationDuration = modalDuration
+            modal.style.animationFillMode = "forwards"
+            modal.style.animationDirection = "reverse"
+            
+            main.style.animationName = "MainAnim"
+            main.style.animationDuration = modalDuration
+            main.style.animationFillMode = "forwards"
+            main.style.animationDirection = "reverse"
         }
 
         function SaveNote() {
@@ -114,6 +183,14 @@
                 }
                 i++
             }
+        }
+        
+        function ShowConfirm(){
+            confirm.style.visibility = "visible"
+        }
+        
+        function HideConfirm(){
+            confirm.style.visibility = "hidden"
         }
 
         function DeleteNote() {
@@ -215,13 +292,21 @@
                 i++
             }
             
-            if (boxChecked){
+            addBtn.style.animationName = "none"
+            addBtn.offsetWidth
+            
+            addBtn.style.animationName = "AddBtnAnim"
+            addBtn.style.animationDuration = modalDuration
+            addBtn.style.animationFillMode = "forwards"
+            addBtn.style.animationDirection = "normal"
+            
+            /*if (boxChecked){
                 controlMenu.style.display = "flex"
                 addBtn.style.display = "none"
             } else {
                 controlMenu.style.display = "none"
                 addBtn.style.display = "block"
-            }
+            }*/
         }
 
         LoadNote()
