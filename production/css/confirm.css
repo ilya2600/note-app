@@ -2,17 +2,18 @@
     background-color: rgba(0, 0, 0, 0.5);
     height: 100%;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     visibility: hidden;
+    z-index: 200;
 }
 
 #confirm-box {
-    background-color: #8e8e8e;
+    background-color: var(--p-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,16 +29,19 @@
 #confirm-icon {
     width: 60px;
     height: 60px;
-    background-color: #ffffff;
+    background-color: var(--button-bg-2);
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 100%;
     font-size: 32px;
     font-weight: 900;
+    margin-bottom: 10px;
 }
 
 #confirm-buttons {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -47,10 +51,18 @@
     background-color: #00d300;
     font-size: 20px;
     padding: 4px 16px;
+    background-color: var(--button-bg-2);
+    color: var(--button-text-2);
+    border-style: solid;
+    border-color: var(--button-text-2);
 }
 
 #confirm-buttons #no-btn {
     background-color: red;
     font-size: 20px;
     padding: 4px 16px;
+    background-color: var(--button-bg-1);
+    color: var(--button-text-1);
+    border-style: solid;
+    border-color: var(--button-text-1);
 }

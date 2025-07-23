@@ -24,6 +24,18 @@
     transition: 0.25s;
 }
 
+@media (max-width: 768px){
+    .note{
+        width: 46vw;
+        flex-grow: 1;
+        height: 46vw;
+    }
+    #note-gallery{
+        gap: 5px;
+        padding: 5px;
+    }
+}
+
 .note:hover{
     transform: scale(1.01)
 }
